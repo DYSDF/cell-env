@@ -1,0 +1,51 @@
+{
+  "name": "cell-env",
+  "version": "1.0.0",
+  "description": "front end enviroment reader.",
+  "repository": {
+    "url": "git@github.com:DYSDF/cell-env.git"
+  },
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
+  "types": "types/",
+  "type-check": "tsc",
+  "files": [
+    "cjs",
+    "esm",
+    "types"
+  ],
+  "scripts": {
+    "test": "nyc mocha --require ts-node/register test/*.spec.ts",
+    "coverage": "nyc report",
+    "prebuild": "rimraf ./tjs && tsc -p tsconfig.json -m ESNext",
+    "build:esm": "rimraf ./esm && rollup -f esm -c rollup.config.js -d ./esm",
+    "build:cjs": "rimraf ./cjs && rollup -f cjs -c rollup.config.js -d ./cjs",
+    "build": "npm run build:esm && npm run build:cjs",
+    "prepublishOnly": "npm run test && npm run build",
+    "ci": "npm run test && npm run coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/preset-env": "^7.14.7",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "@types/chai": "^4.2.11",
+    "@types/lodash": "^4.14.157",
+    "@types/mocha": "^8.0.0",
+    "@types/node": "^14.0.23",
+    "builtin-modules": "^3.2.0",
+    "chai": "^4.2.0",
+    "coveralls": "^3.1.0",
+    "mocha": "^8.0.1",
+    "nyc": "^15.1.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.52.3",
+    "ts-node": "^8.10.2",
+    "tslib": "^2.3.0",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "lodash": "^4.17.19"
+  }
+}
