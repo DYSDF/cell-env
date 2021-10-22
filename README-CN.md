@@ -1,16 +1,14 @@
-# Web Env Reader
+# 前端环境变量读取器（Web Env Reader）
 
-### [中文文档](./README-CN.md)
-
-## Install
+## 安装
 
 ``` shell
 npm install cell-env
 ```
 
-## Usage
+## 使用
 
-### Basic Example
+### 基本用法
 
 ``` js
 import Env from 'cell-env'
@@ -21,7 +19,7 @@ const env = Env({
 })
 ```
 
-### Default Value
+### 默认值
 
 ``` js
 import Env from 'cell-env'
@@ -33,7 +31,7 @@ const env = Env({
 })
 ```
 
-### Format Value
+### 后处理
 
 ``` js
 import Env from 'cell-env'
@@ -51,7 +49,7 @@ const env = Env({
 })
 ```
 
-### Protect Value
+### 变量保护
 
 ``` js
 import Env from 'cell-env'
@@ -61,21 +59,21 @@ const env = Env({
 })
 ```
 
-### Rewrite Value
+### 修改环境变量
 
-The following ways:
-* Set variables to urlQuery.
-* Write to a specific global variable(default is `window.__env__`).
+如下几种方式:
+* 写到url参数中.
+* 写到特定全局变量(默认为`window.__env__`)的字段中.
 
-It should be noted that the priority of the urlQuery is higher than the global variable.
+其中, url参数的优先级高于全局变量.
 
-#### Use urlQuery
+#### 使用URL参数
 
 ```
 http://foobar.com?some-item=1&some-other-item=2
 ```
 
-#### Use global variable
+#### 使用全局变量
 
 ``` html
 <script>
