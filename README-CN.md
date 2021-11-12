@@ -73,6 +73,8 @@ const env = Env({
 http://foobar.com?some-item=1&some-other-item=2
 ```
 
+***url变量默认使用`decodeURIComponent`进行解码***
+
 #### 使用全局变量
 
 ``` html

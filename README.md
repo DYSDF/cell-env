@@ -75,6 +75,8 @@ It should be noted that the priority of the urlQuery is higher than the global v
 http://foobar.com?some-item=1&some-other-item=2
 ```
 
+***urlQuery value default use `decodeURIComponent` to decode***
+
 #### Use global variable
 
 ``` html

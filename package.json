@@ -1,6 +1,6 @@
 {
   "name": "cell-env",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "front end enviroment reader.",
   "repository": {
     "url": "git@github.com:DYSDF/cell-env.git"

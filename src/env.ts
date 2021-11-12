@@ -15,7 +15,7 @@ import {
  *
  * @param {TEnvOptions<T>} options 配置项, 键为env字段名(不区分大小写, 两边的空格会被trim掉),
  *   值为相应的读取配置, 支持fit, deps, def.
- * @param {string | TMockBrowser<T>} name 全局配置变量名, 默认为`__Shiji__`,
+ * @param {string | TMockBrowser<T>} name 全局配置变量名, 默认为`__env__`,
  *   如果传入一个对象, 则不读取全局变量和url参数,
  *   而是直接读传入对象的url和global字段, 用来在非浏览器环境中测试.
  * @returns {Required<T>} 配置读取结果, 格式为键值对.
@@ -29,9 +29,7 @@ function EnvCreator<T extends TOnlyStringKey<T>>(
   let url;
   const g: any = globalThis;
 
-  if (!name || (typeof name === "string" && !g[name])) {
-    name = DEFAULT_GLOBAL_NAME;
-  }
+  if (!name) name = DEFAULT_GLOBAL_NAME;
 
   if (typeof name === "string") {
     global = g[name] ?? {};
